@@ -1,18 +1,4 @@
-<!DOCTYPE html> 
-
-<html> 
-	<head> 
-		<title>test</title> 
-		<meta charset="UTF-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-	</head> 
-	<body> 
-		<button onclick="switchRecord()" id="switcher"> Enregistrer</button> <br/>
-		<button onclick="display()" id="displayer"> Afficher </button>
-		<div class="container">
-		</div>
-		<script type="text/javascript"> 
-			var recording = false;
+var recording = false;
 			var register = {records:[]};	
 
 			if(window.DeviceMotionEvent) { 
@@ -57,6 +43,3 @@
 						)
 				} 
 			}
-		</script> 
-	</body> 
-</html>
