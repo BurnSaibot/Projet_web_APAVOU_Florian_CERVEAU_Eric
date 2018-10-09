@@ -1,6 +1,6 @@
 var recording = false;
 			var register = {records:[]};
-			var timeout;	
+			var buttonTimeout;	
 
 			if(window.DeviceMotionEvent) { 
 				window.addEventListener("devicemotion", motion, false); 
@@ -12,11 +12,11 @@ var recording = false;
 				if (recording) {
 					$('#switcher').text("Enregistrer");
 					recording = false;
-					clearTimeout(timeout);
+					clearTimeout(buttonTimeout);
 				} else {
 					$('#switcher').text("STOP");
 					recording = true;
-					timeout = setTimeout(switchRecord,15000);
+					buttonTimeout = setTimeout(switchRecord,15000);
 				}
 			}
 
