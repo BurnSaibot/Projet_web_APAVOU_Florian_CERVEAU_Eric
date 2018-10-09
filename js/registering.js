@@ -1,5 +1,6 @@
 var recording = false;
-			var register = {records:[]};	
+			var register = {records:[]};
+			var timeout;	
 
 			if(window.DeviceMotionEvent) { 
 				window.addEventListener("devicemotion", motion, false); 
@@ -11,9 +12,11 @@ var recording = false;
 				if (recording) {
 					$('#switcher').text("Enregistrer");
 					recording = false;
+					clearTimeout(timeout);
 				} else {
 					$('#switcher').text("STOP");
 					recording = true;
+					timeout = setTimeout(switchRecord,15000);
 				}
 			}
 
@@ -33,12 +36,12 @@ var recording = false;
 					console.log(records[i]);
 					$('.container').append(
 						'<tr>  \n' +
-							'<td>' + records[i].acceleration.x +'</td>' +
-							'<td>' + records[i].acceleration.y +'</td>' +
-							'<td>' + records[i].acceleration.z +'</td>' +
-							'<td>' + records[i].rotation.alpha +'</td>' +
-							'<td>' + records[i].rotation.beta +'</td>' +
-							'<td>' + records[i].rotation.gamma +'</td>' +
+							'<td>' + records[i].acceleration.x + '</td>' +
+							'<td>' + records[i].acceleration.y + '</td>' +
+							'<td>' + records[i].acceleration.z + '</td>' +
+							'<td>' + records[i].rotation.alpha + '</td>' +
+							'<td>' + records[i].rotation.beta  + '</td>' +
+							'<td>' + records[i].rotation.gamma + '</td>' +
 						'</tr>'
 						)
 				} 
