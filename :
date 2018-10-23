@@ -1,0 +1,25 @@
+Tentative ajax save data
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Committer: Eric Cerveau <eric.cerveau@a-018818.ups.u-psud.fr>
+#
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .Rhistory
+#	modified:   README.md
+#	modified:   css/style.css
+#	modified:   html/index.html
+#	modified:   js/.Rhistory
+#	new file:   js/helpers.js
+#	modified:   js/registering.js
+#	new file:   json/1.json
+#	new file:   json/records.json
+#	new file:   php/1.json
+#	new file:   php/2.json
+#	modified:   php/menu.php
+#	new file:   php/savingRecords.php
+#	modified:   php/welcome.php
+#

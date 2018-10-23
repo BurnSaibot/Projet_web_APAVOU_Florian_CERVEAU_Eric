@@ -35,12 +35,19 @@ function motion(event){
 }
 
 function processData() {
+	var dataToPost = {datas: [],cookies: []};
+	dataToPost.datas = register.records;
+	dataToPost.cookies = getCookiesData()
+	//$('.container').append("<div> " + JSON.stringify(dataToPost) + "</div>");
+	//$('.container').append("<div> " + JSON.stringify(dataToPost.cookies) + "</div>");
+
 	$.ajax({
 		type: 'POST',
 		url: "https://tp-ssh1.dep-informatique.u-psud.fr/~eric.cerveau/Projet_web_APAVOU_Florian_CERVEAU_Eric/php/savingRecords.php",
-		data : "data=" +  JSON.stringify(register.records),
+		data : "data=" +  JSON.stringify(dataToPost),
 		success: function(data) {
 			alert("Vos données ont bien été envoyées au serveur");
+			$('.container').append(data);
 		},
 		error: function(xhr,textStatus,err)
         {
@@ -54,40 +61,40 @@ function testCookies() {
 	setCookie("name" , "firstRegistration",365);
 	let date = new Date();
 	setCookie("date" , date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),365);
-	setCookie("keyWords", JSON.stringify({keyWords : [{mot : "mot666"}, {mot : "mot2"}, {mot: "mot3"}]}), 365);
+	setCookie("keyWords", JSON.stringify( ["mot666", "mot2", "mot3"]), 365);
 	setCookie("timeDuration", -1, 365);
 }
 
 function getCookiesData() {
-	var finalData = [];
+	var finalData = {records :[]};
 	var decodedCookie = decodeURIComponent(document.cookie);
 	var datas = decodedCookie.split(';');
-	console.log("datas  \n " + datas)
 	for (var i = 0; i < datas.length ; i++) {
 		var item = datas[i].split('=');
-		console.log("\n Items " + i + ":" + item[0] )
         if (item[0].includes("user"))
-        	finalData.push({user : item[1]});
+        	finalData.records.push({user: item[1]});
         else if (item[0].includes("name"))
-        	finalData.push({name : item[1]});
+        	finalData.records.push({name:  item[1]});
         else if (item[0].includes("date"))
-        	finalData.push({date : item[1]});
+        	finalData.records.push({date : item[1]});
         else if (item[0].includes("keyWords"))
-        	finalData.push({keyWords: item[1]});
+        	finalData.records.push({keyWords: item[1]});
         else if (item[0].includes("timeDuration")) {
-        	finalData.push({timeDuration: item[1]});
+        	finalData.records.push({timeDuration: item[1]});
 		}
+		finalData.records.push({id : -1});
 	}
-	console.log("Final Data \n" + finalData);
-	return finalData;
+	return finalData.records;
 }
 
 function displayCookies() {
-	let data = getCookiesData();
-	console.log("Données supplémentaires : " + data);
-	for ( var i = 0; i< data.length;i++) {
-		$('.container').append('<p>' + data[i] + '</p> <br/>');
+	let cookies = getCookiesData();
+	console.log(JSON.stringify(cookies));
+	for(var i = 0;i< cookies.length; i++) {
+		console.log(cookies[i]);
 	}
+	$('.container').append("<div> " + JSON.stringify(cookies) + "</div>");
+
 }
 
 function display(){
