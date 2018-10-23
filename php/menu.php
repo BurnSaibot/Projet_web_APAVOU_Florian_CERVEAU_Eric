@@ -9,7 +9,6 @@ $pseudo = $_REQUEST["pseudo"];
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-	<script src="../js/menu.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -46,78 +45,11 @@ $pseudo = $_REQUEST["pseudo"];
 	</div>
 
 	<div class="container-fluid">
-
-		<div class="row">
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-
-			<div class="col-sm-5 col-md-4 col-lg-2 movebox">
-				<h2> Double Pas #1 </h2>
-				<h3>Michel Jordan</h3>
-				<p>double-pas</p>
-				<p>9/10/18</p>
-			</div>
-		<div>
+		<div class="row" id="panelMoves"></div>
 	</div>
 
-	<div>
-		<script>
-			readJSON("../js/sample.json");
- 		</script>
-	</div>
+	<div id="test"></div>
 
-	
+	<script src="../js/menu.js"></script>
+
 	</html>
