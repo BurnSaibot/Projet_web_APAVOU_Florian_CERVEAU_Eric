@@ -17,7 +17,7 @@ $pseudo = $_REQUEST["pseudo"];
 		<div class ="user">
 			<span><?php echo $pseudo ?></span>
 			<a href="welcome.php" class="btn btn-danger" role="button">Déconnexion</a>
-		</div> 
+		</div>
 
 		<h1>Home</h1>
 
@@ -33,13 +33,14 @@ $pseudo = $_REQUEST["pseudo"];
 
 		<form>
 			Pseudo :
-			<input type="text" name="">
+			<input type="text" id="SBpseudo">
 			Mots-clé :
-			<input type="text" name="">
+			<input type="text" id="SBKeyword">
 			Date :
-			<input type="date" name="">
+			<input type="date" id="SBDate">
 			Durée :
-			<input type="number" name="duration">
+			<input type="number" id="SBDuration">
+			<button id="SBSubmit" value="Rechercher" onclick="filterMoves()">
 		</form>
 
 	</div>
