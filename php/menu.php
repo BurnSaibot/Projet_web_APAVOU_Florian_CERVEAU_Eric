@@ -34,7 +34,12 @@ $pseudo = $_REQUEST["pseudo"];
 		<form>
 			<div class = "row">
 				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">
-					Pseudo :
+					Mouvement :
+					<input type="text" id="SBmove">
+				</div>
+
+				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">
+					Utilisateur :
 					<input type="text" id="SBpseudo">
 				</div>
 				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">

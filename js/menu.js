@@ -36,6 +36,7 @@ function renderHTML(data){
 
 
 function filterMoves(){
+	var moveSB = document.getElementById("SBmove").value;
 	var pseudoSB = document.getElementById("SBpseudo").value; 
 	var keywordSB = document.getElementById("SBKeyword").value;
 	var dateSB = document.getElementById("SBDate").value;
@@ -51,7 +52,7 @@ function filterMoves(){
 		var moveKW  = currElem.children[2].innerHTML.toUpperCase();
 		var moveDate = currElem.children[3];
 		var moveDuration = currElem.children[4];
-		var found = (userName.indexOf(pseudoSB.toUpperCase())>-1) && (moveKW.indexOf(keywordSB.toUpperCase())>-1);
+		var found = (moveName.indexOf(moveSB.toUpperCase())>-1) && (userName.indexOf(pseudoSB.toUpperCase())>-1) && (moveKW.indexOf(keywordSB.toUpperCase())>-1);
 		if(found){
 			currElem.style.display = "";
 		}
