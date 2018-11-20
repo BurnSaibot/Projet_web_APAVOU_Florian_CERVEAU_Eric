@@ -74,7 +74,6 @@ function getCookiesData() {
 		var item = datas[i].split('=');
 		
         if (item[0].includes("user"))
-<<<<<<< HEAD
         	//finalData.records.push({user: item[1]});
         	cookiesData.push(item[1]);
         else if (item[0].includes("name"))
@@ -107,7 +106,7 @@ function displayCookies() {
 
 function display(){
 	var records = register.records;
-	console.log("Taille du tableau : " + register.records.length )
+	console.log("Taille du tableau : " + register.records.length );
 	for(var i = 0;i< records.length; i++) {
 		console.log(records[i]);
 		$('.container').append(
