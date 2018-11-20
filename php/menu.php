@@ -32,15 +32,26 @@ $pseudo = $_REQUEST["pseudo"];
 		<h2>Recherche</h2>
 
 		<form>
-			Pseudo :
-			<input type="text" id="SBpseudo">
-			Mots-clé :
-			<input type="text" id="SBKeyword">
-			Date :
-			<input type="date" id="SBDate">
-			Durée :
-			<input type="number" id="SBDuration">
-			<button id="SBSubmit" value="Rechercher" onclick="filterMoves()">
+			<div class = "row">
+				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">
+					Pseudo :
+					<input type="text" id="SBpseudo">
+				</div>
+				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">
+					Mots-clé :
+					<input type="text" id="SBKeyword" >
+				</div>
+				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">
+					Date :
+					<input type="text" id="SBDate" placeholder="DD/MM/YYYY" required pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}" >
+				</div>
+				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">
+					Durée :
+					<input type="number" id="SBDuration">
+				</div>
+				<submit id="SBSubmit" value="Rechercher" onclick="filterMoves()"><div class="btn btn-default">Rechercher</div></submit>
+				
+			</div>
 		</form>
 
 	</div>
@@ -48,8 +59,6 @@ $pseudo = $_REQUEST["pseudo"];
 	<div class="container-fluid">
 		<div class="row" id="panelMoves"></div>
 	</div>
-
-	<div id="test"></div>
 
 	<script src="../js/menu.js"></script>
 
