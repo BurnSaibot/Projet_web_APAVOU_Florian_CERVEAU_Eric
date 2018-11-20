@@ -35,7 +35,7 @@ function motion(event){
 }
 
 function processData() {
-	var dataToPost = {datas: [],cookies: []};
+	var dataToPost = {datas: {},cookies: {}};
 	dataToPost.datas = register.records;
 	dataToPost.cookies = getCookiesData()
 	//$('.container').append("<div> " + JSON.stringify(dataToPost) + "</div>");
@@ -66,7 +66,7 @@ function testCookies() {
 }
 
 function getCookiesData() {
-	var finalData = {records :[]};
+	var tab;
 	var decodedCookie = decodeURIComponent(document.cookie);
 	var datas = decodedCookie.split(';');
 	var cookiesData = [];
@@ -74,6 +74,7 @@ function getCookiesData() {
 		var item = datas[i].split('=');
 		
         if (item[0].includes("user"))
+<<<<<<< HEAD
         	//finalData.records.push({user: item[1]});
         	cookiesData.push(item[1]);
         else if (item[0].includes("name"))
@@ -92,6 +93,20 @@ function getCookiesData() {
 	}
 	console.log(cookiesData);
 	return {User: cookiesData[0], Name: cookiesData[1], Date : cookiesData[2], Keywords: cookiesData[3],Duration : cookiesData[4]};
+=======
+        	tab.push(item[1]);
+        else if (item[0].includes("name"))
+        	tab.push(item[1]);
+        else if (item[0].includes("date"))
+        	tab.push(item[1]);
+        else if (item[0].includes("keyWords"))
+        	tab.push(item[1]);
+        else if (item[0].includes("timeDuration")) {
+        	tab.push(item[1]);
+		}
+	}
+	return {user : tab[0], name : tab[1], date : tab[2], keyWords : tab[3], duration : tab[4]};
+>>>>>>> 30dc231fe9679f411e0148d68a63f9471ffeff4f
 }
 
 function displayCookies() {
