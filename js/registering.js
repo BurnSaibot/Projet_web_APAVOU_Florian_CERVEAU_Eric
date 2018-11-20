@@ -59,7 +59,7 @@ function processData() {
 function testCookies() {
 	setCookie("user" , "kiwi", 365);
 	setCookie("name" , "firstRegistration",365);
-	let date = new Date();
+	var date = new Date();
 	setCookie("date" , date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),365);
 	setCookie("keyWords", JSON.stringify( ["mot666", "mot2", "mot3"]), 365);
 	setCookie("timeDuration", -1, 365);
@@ -69,27 +69,34 @@ function getCookiesData() {
 	var finalData = {records :[]};
 	var decodedCookie = decodeURIComponent(document.cookie);
 	var datas = decodedCookie.split(';');
+	var cookiesData = [];
 	for (var i = 0; i < datas.length ; i++) {
 		var item = datas[i].split('=');
+		
         if (item[0].includes("user"))
-        	finalData.records.push({user: item[1]});
+        	//finalData.records.push({user: item[1]});
+        	cookiesData.push(item[1]);
         else if (item[0].includes("name"))
-        	finalData.records.push({name:  item[1]});
+        	//finalData.records.push({name:  item[1]});
+        	cookiesData.push(item[1]);
         else if (item[0].includes("date"))
-        	finalData.records.push({date : item[1]});
+        	//finalData.records.push({date : item[1]});
+        	cookiesData.push(item[1]);
         else if (item[0].includes("keyWords"))
-        	finalData.records.push({keyWords: item[1]});
+        	//finalData.records.push({keyWords: item[1]});
+        	cookiesData.push(item[1]);
         else if (item[0].includes("timeDuration")) {
-        	finalData.records.push({timeDuration: item[1]});
+        	//finalData.records.push({timeDuration: item[1]});
+        	cookiesData.push(item[1]);
 		}
-		finalData.records.push({id : -1});
 	}
-	return finalData.records;
+	console.log(cookiesData);
+	return {User: cookiesData[0], Name: cookiesData[1], Date : cookiesData[2], Keywords: cookiesData[3],Duration : cookiesData[4]};
 }
 
 function displayCookies() {
 	let cookies = getCookiesData();
-	console.log(JSON.stringify(cookies));
+	console.log("Contenu du cookie avec Json.stringify : " + JSON.stringify(cookies));
 	for(var i = 0;i< cookies.length; i++) {
 		console.log(cookies[i]);
 	}
