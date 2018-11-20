@@ -4,6 +4,8 @@ var recording = false;
 var register = {records:[]};
 var buttonTimeout;	
 var cookiesData = getCookiesData();
+var startDate;
+var endDate;
 
 if(window.DeviceMotionEvent) { 
 	window.addEventListener("devicemotion", motion, false); 
@@ -12,14 +14,19 @@ if(window.DeviceMotionEvent) {
 }
 
 function switchRecord() {
+	
 	if (recording) {
 		$('#switcher').text("Enregistrer");
+		endDate = new Date();
 		recording = false;
 		clearTimeout(buttonTimeout);
+		var time  = Math.abs(endDate.getTime() - startDate.getTime());;
+		Cookies.set("timeDuration", time, { expires: 7 });
 		processData();
 					
 	} else {
 		$('#switcher').text("STOP");
+		startDate = new Date();
 		recording = true;
 		buttonTimeout = setTimeout(switchRecord,15000);
 	}
@@ -57,41 +64,17 @@ function processData() {
 }
 
 function testCookies() {
-	setCookie("user" , "kiwi", 365);
-	setCookie("name" , "firstRegistration",365);
+	Cookies.set('user', 'Kiwi', { expires: 7 });;
+	Cookies.set("name" , "Twerk",{ expires: 7 });
 	var date = new Date();
-	setCookie("date" , date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),365);
-	setCookie("keyWords", JSON.stringify( ["mot666", "mot2", "mot3"]), 365);
-	setCookie("timeDuration", -1, 365);
+	Cookies.set("date" , date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),{ expires: 7 });
+	Cookies.set("keyWords", JSON.stringify( ["mot666", "mot2", "mot3"]), { expires: 7 });
+	Cookies.set("timeDuration", -1, { expires: 7 });
 }
 
 function getCookiesData() {
-	var tab;
-	var decodedCookie = decodeURIComponent(document.cookie);
-	var datas = decodedCookie.split(';');
-	var cookiesData = [];
-	for (var i = 0; i < datas.length ; i++) {
-		var item = datas[i].split('=');
-		
-        if (item[0].includes("user"))
-        	//finalData.records.push({user: item[1]});
-        	cookiesData.push(item[1]);
-        else if (item[0].includes("name"))
-        	//finalData.records.push({name:  item[1]});
-        	cookiesData.push(item[1]);
-        else if (item[0].includes("date"))
-        	//finalData.records.push({date : item[1]});
-        	cookiesData.push(item[1]);
-        else if (item[0].includes("keyWords"))
-        	//finalData.records.push({keyWords: item[1]});
-        	cookiesData.push(item[1]);
-        else if (item[0].includes("timeDuration")) {
-        	//finalData.records.push({timeDuration: item[1]});
-        	cookiesData.push(item[1]);
-		}
-	}
-	console.log(cookiesData);
-	return {User: cookiesData[0], Name: cookiesData[1], Date : cookiesData[2], Keywords: cookiesData[3],Duration : cookiesData[4]};
+	console.log(JSON.parse(Cookies.get().keyWords))
+	return {User: Cookies.get().user, Name: Cookies.get().name, Date : Cookies.get().date, KeyWords: JSON.parse(Cookies.get().keyWords),Duration : Cookies.get().timeDuration};
 }
 
 function displayCookies() {
