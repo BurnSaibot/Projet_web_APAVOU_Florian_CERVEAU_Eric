@@ -48,12 +48,9 @@ $pseudo = $_REQUEST["pseudo"];
 				</div>
 				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">
 					Date :
-					<input type="text" id="SBDate" placeholder="DD/MM/YYYY" required pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}" >
+					<input type="text" id="SBDate" placeholder="DD/MM/YYYY">
 				</div>
-				<div class="col-xs-12 col col-sm-4 col-md-3 col-lg-2">
-					Durée :
-					<input type="number" id="SBDuration">
-				</div>
+
 				<submit id="SBSubmit" value="Rechercher" onclick="filterMoves()"><div class="btn btn-default">Rechercher</div></submit>
 				
 			</div>
@@ -62,7 +59,12 @@ $pseudo = $_REQUEST["pseudo"];
 	</div>
 
 	<div class="container-fluid">
-		<div class="row" id="panelMoves"></div>
+		<form>
+			<div class="row" id="panelMoves">
+				
+			</div>
+
+		</form>
 	</div>
 
 	<script src="../js/menu.js"></script>
