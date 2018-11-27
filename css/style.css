@@ -1,5 +1,7 @@
 
 .user{
+	font-size: 1.2em;
+	text-decoration: bold;
 	position : absolute;
 	top : 2%;
 	right: 2%;
@@ -50,4 +52,17 @@
 	/*background-color: blue;*/
 	margin-bottom: 2%;
 	margin-left: 2%;
+}
+
+.search div{
+	margin-top: 5px;
+}
+
+.connexionDiv{
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.connexionDiv button{
+	margin-top: 10px;
 }
