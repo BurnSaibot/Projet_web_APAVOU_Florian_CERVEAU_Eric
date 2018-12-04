@@ -6,8 +6,8 @@ myRequest.open('GET', '../json/records.json');
 myRequest.onload = function(){
 	var myData = JSON.parse(myRequest.responseText);
 	renderHTML(myData);
-
-	console.log(myData[0].Name);
+	console.log("mes datas");
+	console.log(myData);
 };
 
 myRequest.send();

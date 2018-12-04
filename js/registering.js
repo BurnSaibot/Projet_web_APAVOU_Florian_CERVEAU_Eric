@@ -48,20 +48,6 @@ function processData() {
 
 	$.ajax({
 		type: 'POST',
-		url: "https://tp-ssh1.dep-informatique.u-psud.fr/~eric.cerveau/Projet_web_APAVOU_Florian_CERVEAU_Eric/php/savingRecords.php",
-		data : "data=" +  JSON.stringify(dataToPost),
-		success: function(data) {
-			alert("Vos données ont bien été envoyées au serveur");
-			$('.container').append(data);
-		},
-		error: function(xhr,textStatus,err)
-        {
-            alert("readyState: " + xhr.readyState +"\n"+ "responseText: "+ xhr.responseText +"\n" + "status: " + xhr.status +"\n" + "text status: " + textStatus + "\n" + "error: " + err);
-        }
-	})
-
-	$.ajax({
-		type: 'POST',
 		url: "https://tp-ssh1.dep-informatique.u-psud.fr/~fapavou/Projet_web_APAVOU_Florian_CERVEAU_Eric/php/savingRecords.php",
 		data : "data=" +  JSON.stringify(dataToPost),
 		success: function(data) {
