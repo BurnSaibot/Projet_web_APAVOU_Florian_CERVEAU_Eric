@@ -53,7 +53,6 @@ function processData() {
 		success: function(data) {
 			alert("Vos données ont bien été envoyées au serveur");
 			$('.container').append(data);
-			window.location.replace('./form_registration.html');
 		},
 		error: function(xhr,textStatus,err)
         {

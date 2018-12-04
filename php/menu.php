@@ -22,7 +22,7 @@ $pseudo = $_REQUEST["pseudo"];
 		<h1>Home</h1>
 
 		<div class = "new-move-btn">
-			<a href="../html/index.html" class="btn btn-info" role="button">Enregistrer un nouveau mouvement</a>
+			<a href="../html/form_registration.html" class="btn btn-info" role="button">Enregistrer un nouveau mouvement</a>
 		</div>
 
 	</div>
