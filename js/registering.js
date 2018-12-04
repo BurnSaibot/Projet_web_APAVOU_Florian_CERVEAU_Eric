@@ -1,5 +1,3 @@
-//import { setCookie } from './helper';
-
 var recording = false;
 var register = {records:[]};
 var buttonTimeout;	
@@ -44,7 +42,7 @@ function motion(event){
 function processData() {
 	var dataToPost = {datas: {},cookies: {}};
 	dataToPost.datas = register.records;
-	dataToPost.cookies = getCookiesData()
+	dataToPost.cookies = getCookiesData();
 	//$('.container').append("<div> " + JSON.stringify(dataToPost) + "</div>");
 	//$('.container').append("<div> " + JSON.stringify(dataToPost.cookies) + "</div>");
 
@@ -55,6 +53,7 @@ function processData() {
 		success: function(data) {
 			alert("Vos données ont bien été envoyées au serveur");
 			$('.container').append(data);
+			window.location.replace('./form_registration.html');
 		},
 		error: function(xhr,textStatus,err)
         {
@@ -63,44 +62,3 @@ function processData() {
 	})
 }
 
-function testCookies() {
-	Cookies.set('user', 'Kiwi', { expires: 7 });;
-	Cookies.set("name" , "Twerk",{ expires: 7 });
-	var date = new Date();
-	Cookies.set("date" , date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),{ expires: 7 });
-	Cookies.set("keyWords", JSON.stringify( ["mot666", "mot2", "mot3"]), { expires: 7 });
-	Cookies.set("timeDuration", -1, { expires: 7 });
-}
-
-function getCookiesData() {
-	console.log(JSON.parse(Cookies.get().keyWords))
-	return {User: Cookies.get().user, Name: Cookies.get().name, Date : Cookies.get().date, KeyWords: JSON.parse(Cookies.get().keyWords),Duration : Cookies.get().timeDuration};
-}
-
-function displayCookies() {
-	let cookies = getCookiesData();
-	console.log("Contenu du cookie avec Json.stringify : " + JSON.stringify(cookies));
-	for(var i = 0;i< cookies.length; i++) {
-		console.log(cookies[i]);
-	}
-	$('.container').append("<div> " + JSON.stringify(cookies) + "</div>");
-
-}
-
-function display(){
-	var records = register.records;
-	console.log("Taille du tableau : " + register.records.length );
-	for(var i = 0;i< records.length; i++) {
-		console.log(records[i]);
-		$('.container').append(
-			'<tr>  \n' +
-			'<td>' + records[i].acceleration.x + '</td>' +
-			'<td>' + records[i].acceleration.y + '</td>' +
-			'<td>' + records[i].acceleration.z + '</td>' +
-			'<td>' + records[i].rotation.alpha + '</td>' +
-			'<td>' + records[i].rotation.beta  + '</td>' +
-			'<td>' + records[i].rotation.gamma + '</td>' +
-			'</tr>'
-		)
-	} 
-}
