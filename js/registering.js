@@ -1,5 +1,3 @@
-//import { setCookie } from './helper';
-
 var recording = false;
 var register = {records:[]};
 var buttonTimeout;	
@@ -44,7 +42,7 @@ function motion(event){
 function processData() {
 	var dataToPost = {datas: {},cookies: {}};
 	dataToPost.datas = register.records;
-	dataToPost.cookies = cookiesData();
+	dataToPost.cookies = getCookiesData();
 	//$('.container').append("<div> " + JSON.stringify(dataToPost) + "</div>");
 	//$('.container').append("<div> " + JSON.stringify(dataToPost.cookies) + "</div>");
 

@@ -1,9 +1,10 @@
-function setCookie(cname, cvalue, exdays) {
+/*function setCookie(cname, cvalue, exdays) {
 			    var d = new Date();
 			    d.setTime(d.getTime() + (exdays*24*60*60*1000));
 			    var expires = "expires="+ d.toUTCString();
 			    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
+}*/
+
 function testCookies() {
 	Cookies.set('user', 'Kiwi', { expires: 7 });;
 	Cookies.set("name" , "Twerk",{ expires: 7 });
@@ -39,6 +40,7 @@ function display(){
 		)
 	} 
 }
+
 function registerCookies(){
 	Cookies.set('user', $('.name').val(), {expires: 7 });
 	Cookies.set('name', $('.title').val(), {expires: 7 });
