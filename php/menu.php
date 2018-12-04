@@ -51,7 +51,7 @@ $pseudo = $_REQUEST["pseudo"];
 					<input type="text" id="SBDate" placeholder="DD/MM/YYYY">
 				</div>
 
-				<submit id="SBSubmit" value="Rechercher" onclick="filterMoves()"><div class="btn btn-default">Rechercher</div></submit>
+				<submit id="SBSubmit" value="Rechercher" onclick="filterDisplay()"><div class="btn btn-default">Rechercher</div></submit>
 				
 			</div>
 		</form>

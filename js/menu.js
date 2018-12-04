@@ -40,8 +40,7 @@ function filterMoves(){
 	var pseudoSB = document.getElementById("SBpseudo").value; 
 	var keywordSB = document.getElementById("SBKeyword").value;
 	var dateSB = document.getElementById("SBDate").value;
-	var durationSB = document.getElementById("SBDuration").value;
-	console.log(pseudoSB+" "+keywordSB+" "+dateSB+" "+durationSB + " ");
+	console.log(pseudoSB+" "+keywordSB+" "+dateSB+" ");
 	var moves = $(".movebox");
 	moves.each(function(index){
 		console.log(jQuery(this));
@@ -61,4 +60,48 @@ function filterMoves(){
 		}
 	})
 
+}
+
+function filterDisplay(){
+	var moveSB = document.getElementById("SBmove").value;
+	var pseudoSB = document.getElementById("SBpseudo").value; 
+	var keywordSB = document.getElementById("SBKeyword").value;
+	var dateSB = document.getElementById("SBDate").value;
+
+	console.log(pseudoSB+" "+moveSB+" "+keywordSB+" "+dateSB+" ");
+
+	var moves = $(".movebox");
+	moves.each(function(index){
+		console.log(jQuery(this));
+		var currElem = jQuery(this)[0];
+		currElem.remove();
+	})
+	var find = JSON.parse(myRequest.responseText);
+	if(pseudoSB != ""){
+		find = JSON.parse(myRequest.responseText).filter(function(move){
+			console.log(move.User);
+			return move.User === pseudoSB;
+		});
+	}	
+	if(moveSB != ""){
+		find = JSON.parse(JSON.stringify(find)).filter(function(move){
+		console.log(move.Name);
+		return move.Name === moveSB;
+		});
+	}
+	if(keywordSB != ""){
+		find = JSON.parse(JSON.stringify(find)).filter(function(move){
+		console.log(move.KeyWords);
+		return move.KeyWords.includes(keywordSB);
+		});
+	}
+	if(dateSB != ""){
+		find = JSON.parse(JSON.stringify(find)).filter(function(move){
+		console.log(move.Date);
+		return move.Date === dateSB;
+		});
+	}
+	console.log(find);
+
+	renderHTML(find);
 }
