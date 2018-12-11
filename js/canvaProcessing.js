@@ -7,10 +7,8 @@ function display1Canva() {
 	console.log("Id : " + id + "\n");
 	$.getJSON("../json/" + id + ".json",function(data){
 		//console.log("Data : " + data + "\n"+id);
-		$.each( data , function(key,val){
-			
-		})
-	}).done(function() {
+	}).done(function( data) {
+		displayCanva(data);
     	console.log( "second success" );
   	}).fail(function() {
     	console.log( "error" );
@@ -18,4 +16,11 @@ function display1Canva() {
     	console.log( "complete" );
   	});;
 
+}
+
+function displayCanva(data) {
+	$.each( data , function(key,val){
+		console.log("Acceleration : \n\t-x : " + val.acceleration.x + "\n\t-y : " + val.acceleration.y + "\n\t-z : " + val.acceleration.z)
+	})
+	$.(".canvasContainer").append('<canvas id="myCanvas" width="200" height="100"></canvas>');
 }
