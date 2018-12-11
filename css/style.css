@@ -48,6 +48,15 @@
 	border-radius: 7px ;
 }
 
+.movebox input{
+	margin-left: 95%;
+}
+
+.movebox h2 {
+	font-size: 25px;
+	font-weight: bold;
+}
+
 .search{
 	/*background-color: blue;*/
 	margin-bottom: 2%;

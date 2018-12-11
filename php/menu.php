@@ -59,11 +59,12 @@ $pseudo = $_REQUEST["pseudo"];
 	</div>
 
 	<div class="container-fluid">
-		<form>
+		<form name="formMove" action="../html/visualize.html" method="get">
+			
 			<div class="row" id="panelMoves">
 				
 			</div>
-
+			<input type="submit">
 		</form>
 	</div>
 

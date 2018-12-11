@@ -16,7 +16,7 @@ function renderHTML(data){
 
 	for(i=0; i < data.length; i++){
 		var kw = "";
-		id = data[i].ID;
+		id = data[i].id;
 		user = data[i].User;
 		name = data[i].Name;
 		url = data[i].URL;
@@ -26,11 +26,13 @@ function renderHTML(data){
 			kw += data[i].KeyWords[ii] +" ";
 			console.log(data[i].KeyWords.length);
 		}
-		moveContainer.insertAdjacentHTML('afterbegin', '<div class="col-sm-5 col-md-4 col-lg-2 movebox" id="movebox"> <h2 id ="nameMove">'+ name + '</h2> '
-													  + '<h3 id="userMove"> '+ user + '</h3>'
-													  + '<p id="kwMove"> '+ kw + '</p>'
-												      + '<p id="dateMove"> '+ date +' </p>'
-															+'<p id="durationMove" > ' + duration +' </p></div>');
+		console.log("id :" + id);
+		moveContainer.insertAdjacentHTML('afterbegin', '<div class="col-sm-5 col-md-4 col-lg-2 movebox" id="movebox'+id+'"> <h2 id ="nameMove">'+ name + '</h2> '
+			+ '<h3 id="userMove"> '+ user + '</h3>'
+			+ '<p id="kwMove"> '+ kw + '</p>'
+			+ '<p id="dateMove"> '+ date +' </p>'
+			+'<p id="durationMove" > ' + duration +' </p>'
+			+'<input type="checkbox" name="moveID" value="'+id+'" onchange="chkboxControl()" ></div>');
 	}
 }
 
@@ -80,28 +82,39 @@ function filterDisplay(){
 	if(pseudoSB != ""){
 		find = JSON.parse(myRequest.responseText).filter(function(move){
 			console.log(move.User);
-			return move.User === pseudoSB;
+			return move.User.includes(pseudoSB);
 		});
 	}	
 	if(moveSB != ""){
 		find = JSON.parse(JSON.stringify(find)).filter(function(move){
-		console.log(move.Name);
-		return move.Name === moveSB;
+			console.log(move.Name);
+			return move.Name.includes(moveSB);
 		});
 	}
 	if(keywordSB != ""){
 		find = JSON.parse(JSON.stringify(find)).filter(function(move){
-		console.log(move.KeyWords);
-		return move.KeyWords.includes(keywordSB);
+			console.log(move.KeyWords);
+			return move.KeyWords.includes(keywordSB);
 		});
 	}
 	if(dateSB != ""){
 		find = JSON.parse(JSON.stringify(find)).filter(function(move){
-		console.log(move.Date);
-		return move.Date === dateSB;
+			console.log(move.Date);
+			return move.Date === dateSB;
 		});
 	}
 	console.log(find);
 
 	renderHTML(find);
 }
+
+function chkboxControl(){
+	var limit = 2;
+	$('input[type=checkbox]').on('change', function(evt) {
+	   if($("input[name='moveID']:checked").length > limit) {
+	       this.checked = false;
+	       alert("Please Select only two") 
+	   }
+	});
+}
+
