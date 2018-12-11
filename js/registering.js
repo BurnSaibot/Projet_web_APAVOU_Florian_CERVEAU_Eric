@@ -51,7 +51,7 @@ function processData() {
 
 	$.ajax({
 		type: 'POST',
-		url: "https://tp-ssh1.dep-informatique.u-psud.fr/~eric.cerveau/Projet_web_APAVOU_Florian_CERVEAU_Eric/php/savingRecords.php",
+		url: "../php/savingRecords.php",
 		data : "data=" +  JSON.stringify(dataToPost),
 		success: function(data) {
 			alert("Vos données ont bien été envoyées au serveur");

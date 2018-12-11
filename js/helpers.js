@@ -6,7 +6,7 @@
 }*/
 
 function testCookies() {
-	Cookies.set('user', 'Kiwi', { expires: 7 });;
+	Cookies.set('user', 'Kiwi', { expires: 7 });
 	Cookies.set("name" , "Twerk",{ expires: 7 });
 	var date = new Date();
 	Cookies.set("date" , date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),{ expires: 7 });
