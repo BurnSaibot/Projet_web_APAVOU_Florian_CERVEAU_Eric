@@ -46,6 +46,8 @@
 	border: 1px solid white;
 	background-color: #DEDEDE;
 	border-radius: 7px ;
+	min-height: 240px;
+  max-height: 240px;
 }
 
 .movebox input{

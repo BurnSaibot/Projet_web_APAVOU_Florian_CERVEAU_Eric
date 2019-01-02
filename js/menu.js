@@ -39,7 +39,7 @@ function renderHTML(data){
 
 function filterDisplay(){
 	var moveSB = document.getElementById("SBmove").value;
-	var pseudoSB = document.getElementById("SBpseudo").value; 
+	var pseudoSB = document.getElementById("SBpseudo").value;
 	var keywordSB = document.getElementById("SBKeyword").value;
 	var dateSB = document.getElementById("SBDate").value;
 
@@ -51,7 +51,7 @@ function filterDisplay(){
 		var currElem = jQuery(this)[0];
 		if(currElem.children[5].checked == false){
 			currElem.remove();
-		}	
+		}
 	})
 	var find = JSON.parse(myRequest.responseText);
 	if(pseudoSB != ""){
@@ -59,7 +59,7 @@ function filterDisplay(){
 			console.log(move.User);
 			return move.User.includes(pseudoSB);
 		});
-	}	
+	}
 	if(moveSB != ""){
 		find = JSON.parse(JSON.stringify(find)).filter(function(move){
 			console.log(move.Name);
@@ -86,11 +86,10 @@ function filterDisplay(){
 function chkboxControl(){
 	var limit = 2;
 	$('input[type=checkbox]').on('click', function(evt) {
-		console.log($("input[type=checkbox]:checked").length);
-	   if($("input[type=checkbox]:checked").length > limit) {
+			console.log($("input[type=checkbox]:checked").length);
+		  if($("input[type=checkbox]:checked").length > limit) {
 	       this.checked = false;
-	       alert("Please Select only two") 
+	       alert("Please Select only two")
 	   }
 	});
 }
-
