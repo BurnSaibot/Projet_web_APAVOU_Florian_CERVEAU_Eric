@@ -1,7 +1,8 @@
+<!--
 <?php
 $pseudo = $_REQUEST["pseudo"];
 ?>
-
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +10,15 @@ $pseudo = $_REQUEST["pseudo"];
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+	<script src="../js/helpers.js"></script>
 </head>
 <body>
 
 	<div class = "navbar navbar-default navbar-static banniere">
 
 		<div class ="user">
-			<span><?php echo $pseudo ?></span>
+			<span class="name"></span>
 			<a href="welcome.php" class="btn btn-danger" role="button">Déconnexion</a>
 		</div>
 
@@ -52,17 +55,18 @@ $pseudo = $_REQUEST["pseudo"];
 				</div>
 
 				<submit id="SBSubmit" value="Rechercher" onclick="filterDisplay()"><div class="btn btn-default">Rechercher</div></submit>
-				
+
 			</div>
 		</form>
 
 	</div>
 
 	<div class="container-fluid">
+		<div class="pages" id="pagesMoves"></div>
 		<form name="formMove" action="../html/visualize.html" method="get">
-			
+
 			<div class="row" id="panelMoves">
-				
+
 			</div>
 			<input type="submit">
 		</form>

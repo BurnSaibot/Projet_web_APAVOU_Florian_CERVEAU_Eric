@@ -4,7 +4,7 @@
 	<title>Connexion</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<script src="../helpers.js"></script>
+	<script src="../js/helpers.js"></script>
 <body>
 	<div class="navbar navbar-default banniere">
 		<h1>Connexion au Projet Basket</h1>
