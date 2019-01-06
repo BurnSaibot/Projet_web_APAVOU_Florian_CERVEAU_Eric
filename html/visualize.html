@@ -11,10 +11,56 @@
 	</head> 
 	<body> 
 		<button onclick="setCookieID()" id="displayer"> SetCookieID </button>
-		<button onclick="display1Canva()" id="displayer"> DisplayCanva </button>
-
-		<div id="canvasContainer">
+		<div id=canvasAccelContainer>
+			<canvas id="accelCanvas" width="500" height="500">
+				Ce canvas affiche les valeurs de l'accéléromètre sélectionnées à l'aide des checkboxes placées plus bas.
+			</canvas>
+			<fieldset>
+				<legend>Valeurs à afficher pour le premier fichier : </legend>
+				<input type="checkbox" id="x1Accel" name="x1Accel">
+				<label for="x1Accel">Accélération X</label>
+				<input type="checkbox" id="y1Accel" name="y1Accel">
+				<label for="y1Accel">Accélération Y</label>
+				<input type="checkbox" id="z1Accel" name="z1Accel">
+				<label for="z1Accel">Accélération Z</label>
+			</fieldset>
+			<fieldset>
+				<legend>Valeurs à afficher pour le deuxieme fichier s'il existe : </legend>
+				<input type="checkbox" id="x2Accel" name="x2Accel">
+				<label for="x2Accel">Accélération X</label>
+				<input type="checkbox" id="y2Accel" name="y2Accel">
+				<label for="y2Accel">Accélération Y</label>
+				<input type="checkbox" id="z2Accel" name="z2Accel">
+				<label for="z2Accel">Accélération Z</label>
+			</fieldset>
+			<button onclick="redrawAccel()">Redessiner</button>
 		</div>
-		</div> 
+
+		<div id=canvasRotaContainer>
+			<canvas id="rotaCanvas" width="500" height="500">
+				Ce canvas affiche les valeurs de rotation sélectionnées à l'aide des checkboxes placées plus bas.
+			</canvas>
+			<fieldset>
+				<legend>Valeurs à afficher pour le premier fichier : </legend>
+				<input type="checkbox" id="x1Rota" name="x1Rota">
+				<label for="x1Rota">Rotation X</label>
+				<input type="checkbox" id="y1Rota" name="y1Rota">
+				<label for="y1Rota">Rotation Y</label>
+				<input type="checkbox" id="z1Rota" name="z1Rota">
+				<label for="z1Rota">Rotation Z</label>
+			</fieldset>
+			<fieldset>
+				<legend>Valeurs à afficher pour le deuxieme fichier s'il existe : </legend>
+				<input type="checkbox" id="x2Rota" name="x2Rota">
+				<label for="x2Rota">Rotation X</label>
+				<input type="checkbox" id="y2Rota" name="y2Rota">
+				<label for="y2Rota">Rotation Y</label>
+				<input type="checkbox" id="z2Rota" name="z2Rota">
+				<label for="z2Rota">Rotation Z</label>
+			</fieldset>
+			<button onclick="redrawRota()">Redessiner</button>
+		</div>
+
+		
 	</body> 
 </html>
