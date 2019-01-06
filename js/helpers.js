@@ -38,7 +38,7 @@ function display(){
 			'<td>' + records[i].rotation.gamma + '</td>' +
 			'</tr>'
 		)
-	} 
+	}
 }
 
 function registerCookies(){
@@ -52,6 +52,13 @@ function registerCookies(){
 
 	//console.log( "Cookies : \n \t-user : " + Cookies.get().user + "\n \t-title : " + Cookies.get().name + "\n \t-keyWords : " + Cookies.get().keyWords + "\n \t-date : " + Cookies.get().date);
 	window.location.replace('./record.html');
+}
+
+function registerPseudo(){
+	var pseudo = document.getElementById("pseudo").value;
+	console.log(pseudo);
+	Cookies.set('user',pseudo,{expires: 7 });
+	console.log(Cookies.get().user);
 }
 
 function fillName() {

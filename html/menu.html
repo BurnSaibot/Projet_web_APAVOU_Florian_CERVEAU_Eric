@@ -1,11 +1,8 @@
-<!--
-<?php
-$pseudo = $_REQUEST["pseudo"];
-?>
--->
 <!DOCTYPE html>
+
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Accueil</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -18,8 +15,8 @@ $pseudo = $_REQUEST["pseudo"];
 	<div class = "navbar navbar-default navbar-static banniere">
 
 		<div class ="user">
-			<span class="name"></span>
-			<a href="welcome.php" class="btn btn-danger" role="button">Déconnexion</a>
+			<span id="pseudoContainer"></span>
+			<a href="welcome.html" class="btn btn-danger" role="button">Déconnexion</a>
 		</div>
 
 		<h1>Home</h1>
@@ -54,7 +51,7 @@ $pseudo = $_REQUEST["pseudo"];
 					<input type="text" id="SBDate" placeholder="DD/MM/YYYY">
 				</div>
 
-				<submit id="SBSubmit" value="Rechercher" onclick="filterDisplay()"><div class="btn btn-default">Rechercher</div></submit>
+				<submit id="SBSubmit" value="Rechercher" onclick="filterDisplay(1)"><div class="btn btn-default">Rechercher</div></submit>
 
 			</div>
 		</form>
@@ -63,7 +60,7 @@ $pseudo = $_REQUEST["pseudo"];
 
 	<div class="container-fluid">
 		<div class="pages" id="pagesMoves"></div>
-		<form name="formMove" action="../html/visualize.html" method="get">
+		<form name="formMove" action="visualize.html" method="get">
 
 			<div class="row" id="panelMoves">
 

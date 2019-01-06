@@ -4,6 +4,7 @@
 	<title>Connexion</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<script src="../js/helpers.js"></script>
 <body>
 	<div class="navbar navbar-default banniere">
@@ -11,12 +12,12 @@
 	</div>
 
 	<div class="connexionDiv">
-		<form method="post" action="menu.php">
+		<form action="menu.html">
 			Entrez votre pseudo :
 			<br>
-			<input type="text" name="pseudo" class="name" required>
+			<input type="text" name="pseudo" class="pseudo" id="pseudo" required>
 			<br>
-			<button type="submit" class="btn btn-info" onclick="registerCookies()">Connexion</button>
+			<button class="btn btn-info" onclick="registerPseudo()">Connexion</button>
 		</form>
 	</div>
 </body>
