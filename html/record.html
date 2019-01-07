@@ -1,18 +1,26 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
-<html> 
-	<head> 
-		<title>Record</title> 
+<html>
+	<head>
+		<title>Record</title>
 		<meta charset="UTF-8">
-		<link rel="Stylesheet" href="../css/style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 		<script src="../js/helpers.js"></script>
 		<script src="../js/registering.js"></script>
-	</head> 
-	<body> 
-		<h1> Enregistrement des données : </h1> 
-		<button onclick="switchRecord()" id="switcher"> Enregistrer</button> <br/>
-		</div> 
-	</body> 
+	</head>
+	<body>
+		<div class = "banniere">
+			<div class ="user">
+				<a href="../html/form_registration.html" class="button btn-blue" role="button">Retour</a>
+				<a href="welcome.html" class="button btn-red">Déconnexion</a>
+			</div>
+			<h1>Enregistrement de données</h1>
+		</div>
+		<div class="btnDiv">
+			<button onclick="switchRecord()" class="rec-btn" id="switcher"> Enregistrer</button> <br/>
+		</div>
+	</body>
 </html>

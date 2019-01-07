@@ -1,28 +1,45 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
-<html> 
-	<head> 
-		<title>Record</title> 
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Record</title>
 		<meta charset="UTF-8">
-		<link rel="Stylesheet" href="../styles.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 		<script src="../js/helpers.js"></script>
-		
-	</head> 
-	<body onload="fillName()"> 
+
+	</head>
+
+	<div class = "banniere">
+
+		<div class ="user">
+			<a href="../html/menu.html" class="button btn-blue" role="button">Retour</a>
+			<a href="welcome.html" class="button btn-red">Déconnexion</a>
+		</div>
+
+		<h1>Nouveau Mouvement</h1>
+
+	</div>
+
+	<body onload="fillName()">
+		<div class="formDiv">
 		<form>
-			<label for="name">Nom : </label>
-			<input type="text" class="name" name="name" value="" /> <br/>
-			<label for="title"> Titre : </label>
-			<input type="text" class="title" name="title"/><br/>
-			<label for="k-word1"> Keyword 1 :  </label>
-			<input type="text" class="k-word1" name="k-word1"/> <br/>
-			<label for="k-word2"> Keyword 2 :</label>
-			<input type="text" class="k-word2" name="k-word2"/> <br/>
-			<label for="k-word3"> Keyword 3 : </label>
-			<input type="text" class="k-word3" name="k-word3"/> <br/>
+			<label for="name"> Nom* : </label>
+			<input type="text" class="name" name="name" placeholder="Votre Pseudo.." value="" required />
+			<label for="title"> Titre* : </label>
+			<input type="text" class="title" name="title" placeholder="Nom de votre mouvement.." required/>
+			<label for="k-word1"> Mot Clé n°1* :  </label>
+			<input type="text" class="k-word1" name="k-word1" placeholder="1er mot clé.." required/>
+			<label for="k-word2"> Mot Clé n°2 :</label>
+			<input type="text" class="k-word2" name="k-word2"  placeholder="2ème mot clé.."/>
+			<label for="k-word3"> Mot Clé n°3 : </label>
+			<input type="text" class="k-word3" name="k-word3"  placeholder="3ème mot clé.."/>
+			<p>*champs obligatoires</p>
+			<submit class="button btn-blue" onclick="registerCookies()">Enregistrer un mouvement </submit>
 		</form>
-		<button onclick="registerCookies()">Enregistrer un mouvement </button>
-	</body> 
+
+	</div>
+	</body>
 </html>
