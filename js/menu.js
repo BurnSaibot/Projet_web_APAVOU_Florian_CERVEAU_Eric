@@ -124,19 +124,19 @@ function filterDisplay(page){
 	if(pseudoSB != ""){
 		find = JSON.parse(myRequest.responseText).filter(function(move){
 			console.log(move.User);
-			return move.User.includes(pseudoSB);
+			return move.User.toUpperCase().includes(pseudoSB.toUpperCase());
 		});
 	}
 	if(moveSB != ""){
 		find = JSON.parse(JSON.stringify(find)).filter(function(move){
 			console.log(move.Name);
-			return move.Name.includes(moveSB);
+			return move.Name.toUpperCase().includes(moveSB.toUpperCase());
 		});
 	}
 	if(keywordSB != ""){
 		find = JSON.parse(JSON.stringify(find)).filter(function(move){
 			console.log(move.KeyWords);
-			return move.KeyWords.includes(keywordSB);
+			return move.KeyWords.toUpperCase().includes(keywordSB.toUpperCase());
 		});
 	}
 	if(dateSB != ""){
