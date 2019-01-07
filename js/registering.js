@@ -4,9 +4,16 @@ var buttonTimeout;
 var cookiesData = getCookiesData();
 var startDate;
 var endDate;
+var currX=0,currY=0,currZ=0,currAlpha=0,currBeta=0,currGamma=0;
 
 if(window.DeviceMotionEvent) { 
 	window.addEventListener("devicemotion", motion, false); 
+} else {
+ 	window.alert("DeviceMotionEvent is not supported"); 
+}
+
+if(window.DeviceOrientationEvent) { 
+	window.addEventListener("deviceorientation", orientation, false); 
 } else {
  	window.alert("DeviceMotionEvent is not supported"); 
 }
@@ -34,12 +41,21 @@ function motion(event){
 	if (recording) {
 		let currTime = new Date();
 		timer = Math.abs(currTime.getTime() - startDate.getTime())
+		currX = event.acceleration.x;
+		currY = event.acceleration.y;
+		currZ = event.acceleration.z;
 		register.records.push({
-			acceleration: {x: event.acceleration.x, y: event.acceleration.y , z : event.acceleration.z},
-			rotation: {alpha: event.rotation.alpha, beta: event.rotation.beta, gamma: event.rotation.gamma},
+			acceleration: {x: currX, y: currY , z : currZ},
+			rotation: {alpha: currAlpha, beta: currBeta, gamma: currGamma},
 			time: timer
 		})
 	}
+}
+
+function orientation(event){
+	currAlpha = event.alpha;
+	currBeta = event.beta;
+	currGamma = event.gamma;
 }
 
 function processData() {
