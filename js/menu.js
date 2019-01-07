@@ -44,7 +44,14 @@ function renderHTMLbyPage(data, page){
 		pageContainer.insertAdjacentHTML('beforeend', '<a class="numPage" href = "menu.html?page='+(j+1)+'">	'+(j+1)+'	</a>');
 	}
 	var moves = $(".movebox");
-	for(i=nbBlock*(page-1); i < nbBlock*page; i++){
+	var limit = data.length;
+	console.log(limit);
+	console.log(nbBlock*page);
+	if(limit>nbBlock*page){
+		limit = nbBlock*page;
+	}
+	console.log("Limite" + limit);
+	for(i=nbBlock*(page-1); i < limit; i++){
 
 		var kw = "";
 		id = data[i].id;
@@ -95,10 +102,11 @@ function filterDisplay(page){
 	var keywordSB = document.getElementById("SBKeyword").value;
 	var dateSB = document.getElementById("SBDate").value;
 
-	Cookies.set('nameMove', moveSB, {expires: 7 });
-	Cookies.set('pseudoSB',pseudoSB, {expires: 7 });
-	Cookies.set('kwSB', keywordSB, {expires: 7 });
-	Cookies.set('dateSB', dateSB, {expires: 7 });
+	var inFifteenMinutes = new Date(new Date().getTime() + 15 * 60 * 1000);
+	Cookies.set('nameMove', moveSB, {expires: inFifteenMinutes });
+	Cookies.set('pseudoSB',pseudoSB, {expires: inFifteenMinutes });
+	Cookies.set('kwSB', keywordSB, {expires: inFifteenMinutes });
+	Cookies.set('dateSB', dateSB, {expires: inFifteenMinutes });
 
 	console.log(pseudoSB+" "+moveSB+" "+keywordSB+" "+dateSB+" ");
 	var pageDisplay = $(".numPage");
