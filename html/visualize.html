@@ -1,66 +1,81 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 
-<html> 
-	<head> 
-		<title>Affichage de la courbe </title> 
+<html>
+	<head>
+		<title>Affichage de la courbe </title>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 		<script src="../js/helpers.js"></script>
 		<script src="../js/canvaProcessing.js"></script>
-	</head> 
-	<body onload="disableCheckBoxes()"> 
-		<button onclick="setCookieID()" id="displayer"> SetCookieID </button>
-		<div id=canvasAccelContainer>
+	</head>
+	<body onload="disableCheckBoxes()">
+		<div class = "banniere">
+
+			<div class ="user">
+				<a href="../html/menu.html" class="button btn-blue" role="button">Retour</a>
+				<a href="welcome.html" class="button btn-red">Déconnexion</a>
+			</div>
+
+			<h1>Visualisation</h1>
+
+		</div>
+
+		<div id=canvasAccelContainer class="canvasContainer">
+			<h2>Accélération</h2>
 			<canvas id="accelCanvas" width="500" height="500">
 				Ce canvas affiche les valeurs de l'accéléromètre sélectionnées à l'aide des checkboxes placées plus bas.
 			</canvas>
 			<fieldset>
 				<legend>Valeurs à afficher pour le premier fichier : </legend>
-				<input type="checkbox" id="x1Accel" name="x1Accel">
-				<label for="x1Accel">Accélération X</label>
-				<input type="checkbox" id="y1Accel" name="y1Accel">
-				<label for="y1Accel">Accélération Y</label>
-				<input type="checkbox" id="z1Accel" name="z1Accel">
-				<label for="z1Accel">Accélération Z</label>
+				<input type="checkbox" id="x1Accel" name="x1Accel" class="xAxis">
+				<label for="x1Accel" class="xAxis1">Accélération X</label>
+				<input type="checkbox" id="y1Accel" name="y1Accel" class="yAxis">
+				<label for="y1Accel" class="yAxis1">Accélération Y</label>
+				<input type="checkbox" id="z1Accel" name="z1Accel" class="zAxis">
+				<label for="z1Accel" class="zAxis1">Accélération Z</label>
 			</fieldset>
 			<fieldset>
 				<legend>Valeurs à afficher pour le deuxieme fichier s'il existe : </legend>
-				<input type="checkbox" id="x2Accel" name="x2Accel" class="grp2">
-				<label for="x2Accel">Accélération X</label>
-				<input type="checkbox" id="y2Accel" name="y2Accel" class="grp2">
-				<label for="y2Accel">Accélération Y</label>
-				<input type="checkbox" id="z2Accel" name="z2Accel" class="grp2">
-				<label for="z2Accel">Accélération Z</label>
+				<input type="checkbox" id="x2Accel" name="x2Accel" class="grp2 xAxis" >
+				<label for="x2Accel" class="xAxis2">Accélération X</label>
+				<input type="checkbox" id="y2Accel" name="y2Accel" class="grp2 yAxis">
+				<label for="y2Accel" class="yAxis2">Accélération Y</label>
+				<input type="checkbox" id="z2Accel" name="z2Accel" class="grp2 zAxis">
+				<label for="z2Accel" class="zAxis2">Accélération Z</label>
 			</fieldset>
-			<button onclick="redrawAccel()">Redessiner</button>
+			<button class="button btn-white" onclick="redrawAccel()">Redessiner</button>
 		</div>
-
-		<div id=canvasRotaContainer>
+		<hr>
+		<div id=canvasRotaContainer class="canvasContainer">
+			<h2>Rotation</h2>
 			<canvas id="rotaCanvas" width="500" height="500">
 				Ce canvas affiche les valeurs de rotation sélectionnées à l'aide des checkboxes placées plus bas.
 			</canvas>
 			<fieldset>
 				<legend>Valeurs à afficher pour le premier fichier : </legend>
-				<input type="checkbox" id="x1Rota" name="x1Rota">
-				<label for="x1Rota">Rotation X</label>
-				<input type="checkbox" id="y1Rota" name="y1Rota">
-				<label for="y1Rota">Rotation Y</label>
-				<input type="checkbox" id="z1Rota" name="z1Rota">
-				<label for="z1Rota">Rotation Z</label>
+				<input type="checkbox" id="x1Rota" name="x1Rota" >
+				<label for="x1Rota" class="xAxis1">Rotation X</label>
+				<input type="checkbox" id="y1Rota" name="y1Rota" class="yAxis">
+				<label for="y1Rota" class="yAxis1">Rotation Y</label>
+				<input type="checkbox" id="z1Rota" name="z1Rota" class="zAxis">
+				<label for="z1Rota" class="zAxis1">Rotation Z</label>
 			</fieldset>
 			<fieldset>
 				<legend>Valeurs à afficher pour le deuxieme fichier s'il existe : </legend>
-				<input type="checkbox" id="x2Rota" name="x2Rota" class="grp2">
-				<label for="x2Rota">Rotation X</label>
-				<input type="checkbox" id="y2Rota" name="y2Rota" class="grp2">
-				<label for="y2Rota">Rotation Y</label>
-				<input type="checkbox" id="z2Rota" name="z2Rota" class="grp2">
-				<label for="z2Rota">Rotation Z</label>
+				<input type="checkbox" id="x2Rota" name="x2Rota" class="grp2 xAxis">
+				<label for="x2Rota" class="xAxis2">Rotation X</label>
+				<input type="checkbox" id="y2Rota" name="y2Rota" class="grp2 yAxis">
+				<label for="y2Rota" class="yAxis2">Rotation Y</label>
+				<input type="checkbox" id="z2Rota" name="z2Rota" class="grp2 zAxis">
+				<label for="z2Rota" class="zAxis2">Rotation Z</label>
 			</fieldset>
-			<button onclick="redrawRota()">Redessiner</button>
+			<button class="button btn-white" onclick="redrawRota()">Redessiner</button>
 		</div>
 
-		
-	</body> 
+
+	</body>
 </html>

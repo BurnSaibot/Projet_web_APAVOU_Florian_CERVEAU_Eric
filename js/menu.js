@@ -38,7 +38,7 @@ function findGetParameter(parameterName) {
 }
 
 function renderHTMLbyPage(data, page){
-	var nbBlock = 5;
+	var nbBlock = 15;
 	var nbPage = Math.ceil(data.length/nbBlock);
 	for(j=0; j<nbPage; j++){
 		pageContainer.insertAdjacentHTML('beforeend', '<a class="numPage" href = "menu.html?page='+(j+1)+'">	'+(j+1)+'	</a>');

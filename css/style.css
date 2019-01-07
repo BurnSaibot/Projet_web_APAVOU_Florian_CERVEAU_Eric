@@ -205,3 +205,39 @@ a:hover
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.canvasContainer
+{
+	margin: 1%;
+}
+.canvasContainer canvas
+{
+	border: 2px solid #CCCCCC;
+	border-radius: 1%;
+}
+
+.xAxis1
+{
+	color : red;
+}
+
+.yAxis1{
+	color : green;
+}
+
+.zAxis1{
+	color : blue;
+}
+
+.xAxis2
+{
+	color : #ff46af;
+}
+
+.yAxis2{
+	color : #fcd21c;
+}
+
+.zAxis2{
+	color : #00B7EB;
+}
