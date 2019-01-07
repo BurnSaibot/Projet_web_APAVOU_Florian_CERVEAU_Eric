@@ -42,17 +42,20 @@ function display(){
 }
 
 function registerCookies(){
-	Cookies.set('user', $('.name').val(), {expires: 7 });
-	Cookies.set('name', $('.title').val(), {expires: 7 });
-	var date = new Date();
-	var currDay = date.getDate();
-	var currMonth = date.getMonth()+1;
-	//alert( ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear());
-	Cookies.set("date" , ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear(),{ expires: 7 });
-	Cookies.set('keyWords', JSON.stringify( [$('.k-word1').val(),$('.k-word2').val(),$('.k-word3').val()]), {expires: 7 });
+	if ($('#validation').prop("disabled") == false ) {
+		Cookies.set('user', $('.name').val(), {expires: 7 });
+		Cookies.set('name', $('.title').val(), {expires: 7 });
+		var date = new Date();
+		var currDay = date.getDate();
+		var currMonth = date.getMonth()+1;
+		//alert( ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear());
+		Cookies.set("date" , ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear(),{ expires: 7 });
+		Cookies.set('keyWords', JSON.stringify( [$('.k-word1').val(),$('.k-word2').val(),$('.k-word3').val()]), {expires: 7 });
 
-	//console.log( "Cookies : \n \t-user : " + Cookies.get().user + "\n \t-title : " + Cookies.get().name + "\n \t-keyWords : " + Cookies.get().keyWords + "\n \t-date : " + Cookies.get().date);
-	window.location.replace('./record.html');
+		//console.log( "Cookies : \n \t-user : " + Cookies.get().user + "\n \t-title : " + Cookies.get().name + "\n \t-keyWords : " + Cookies.get().keyWords + "\n \t-date : " + Cookies.get().date);
+		window.location.replace('./record.html');
+	}
+	
 }
 
 function registerPseudo(){
@@ -64,12 +67,16 @@ function registerPseudo(){
 
 function fillName() {
 	$('.name').val(Cookies.get().user);
+	document.addEventListener('keydown', testContent, false);
 }
 
 function testContent() {
-	if ($(".name").val.length > 0 && $(".title").val.length > 0 && $(".k-word1").val.length > 0 ) {
-		$(':input[type=submit]').prop("disabled",false);
+	console.log("testContent")
+	if ($(".name").val().length > 0 && $(".title").val().length > 0 && $(".k-word1").val().length > 0 ) {
+		console.log("Able to click")
+		$('#validation').prop("disabled",false);
 	} else {
-		$(':input[type=submit]').prop("disabled",true);
+		console.log("Unable to click")
+		$('#validation').prop("disabled",true);
 	}
 }
