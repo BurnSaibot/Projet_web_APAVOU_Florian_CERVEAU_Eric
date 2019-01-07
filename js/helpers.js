@@ -45,9 +45,10 @@ function registerCookies(){
 	Cookies.set('user', $('.name').val(), {expires: 7 });
 	Cookies.set('name', $('.title').val(), {expires: 7 });
 	var date = new Date();
-	var day = date.getDay();
-	var month = date.getMonth();
-	Cookies.set("date" , ((day < 10) ? '0' + day : day) + "/" + ((month < 10) ? '0' + month : month) + "/" + date.getFullYear(),{ expires: 7 });
+	var currDay = date.getDate();
+	var currMonth = date.getMonth()+1;
+	alert( ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear());
+	Cookies.set("date" , ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear(),{ expires: 7 });
 	Cookies.set('keyWords', JSON.stringify( [$('.k-word1').val(),$('.k-word2').val(),$('.k-word3').val()]), {expires: 7 });
 
 	//console.log( "Cookies : \n \t-user : " + Cookies.get().user + "\n \t-title : " + Cookies.get().name + "\n \t-keyWords : " + Cookies.get().keyWords + "\n \t-date : " + Cookies.get().date);
