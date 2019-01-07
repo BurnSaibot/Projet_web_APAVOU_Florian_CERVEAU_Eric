@@ -1,29 +1,25 @@
 var IDs 
 
 function setCookieID() {
-	Cookies.set('IDs',JSON.stringify([1]),{expires: 1});
+	Cookies.set('IDs',JSON.stringify([1,5]),{expires: 1});
 }
 
 function isChecked(s){
 	return document.getElementById(s).checked;
 }
 
-function maxInt(a,b) {
+function getMax(a,b) {
 	if (a>b) return a;
 	return b;
 }
 
-function drawAccelX(id,color){
-	console.log("Id : " + id + "\n");
-	$.getJSON("../json/" + id + ".json",function(data){
-	}).done(function( stats) {
+function drawAccelX(stats,color,maxTime){
 		let canvas = document.getElementById("accelCanvas"); 
 		let ctx = canvas.getContext("2d");
 		let lastX = 0;
 		let lastT = 0;
 		let currentX = 0;
 		let currentT = 0;
-		let maxTime = stats[stats.length-1].time;
 		let maxLength = canvas.width;
 		let maxHeight = getMaxAccel(stats);
 		ctx.beginPath();
@@ -40,29 +36,21 @@ function drawAccelX(id,color){
 			}
 			if (!(lastX == 0)) {
 				ctx.beginPath();
-				ctx.moveTo((lastT / maxTime)*maxLength,lastX/maxHeight*250 +250)
+				ctx.moveTo((lastT / maxTime)*maxLength,500-(lastX/maxHeight*250 +250));
 				ctx.strokeStyle = color;
-				ctx.lineTo((currentT/maxTime)*maxLength,currentX/maxHeight*250 +250);
+				ctx.lineTo((currentT/maxTime)*maxLength,500-(currentX/maxHeight*250 +250));
 				ctx.stroke();
 			}
 		})
-  	}).fail(function() {
-    	console.log( "error" );
-  	}).always(function() {
-    	console.log( "Drawing Accel X complete" );
-	});
 }
 
-function drawAccelY(id,color){
-	$.getJSON("../json/" + id + ".json",function(data){
-	}).done(function( stats) {
+function drawAccelY(stats,color,maxTime){
 		let canvas = document.getElementById("accelCanvas"); 
 		let ctx = canvas.getContext("2d");
 		let lastY = 0;
 		let lastT = 0;
 		let currentY = 0;
 		let currentT = 0;
-		let maxTime = stats[stats.length-1].time;
 		let maxLength = canvas.width;
 		let maxHeight = getMaxAccel(stats);
 		console.log("Hauteur max : " + maxHeight)
@@ -80,29 +68,21 @@ function drawAccelY(id,color){
 			}
 			if (!(lastY == 0)) {
 				ctx.beginPath();
-				ctx.moveTo((lastT/maxTime)*maxLength,lastY/maxHeight * 250 + 250)
+				ctx.moveTo((lastT/maxTime)*maxLength,500-(lastY/maxHeight * 250 + 250));
 				ctx.strokeStyle = color;
-				ctx.lineTo((currentT/maxTime)*maxLength,currentY/maxHeight * 250 + 250);
+				ctx.lineTo((currentT/maxTime)*maxLength,500-(currentY/maxHeight * 250 + 250));
 				ctx.stroke();
 			}
-		})  	
-	}).fail(function() {
-    	console.log( "error" );
-  	}).always(function() {
-    	console.log( "Drawing Accel Y complete" );
-	});		
+		}) 	
 }
 
-function drawAccelZ(id,color){
-	$.getJSON("../json/" + id + ".json",function(data){
-	}).done(function( stats) {
+function drawAccelZ(stats,color,maxTime){
 		let canvas = document.getElementById("accelCanvas"); 
 		let ctx = canvas.getContext("2d");
 		let lastZ = 0;
 		let lastT = 0;
 		let currentZ = 0;
 		let currentT = 0;
-		let maxTime = stats[stats.length-1].time;
 		let maxLength = canvas.width;
 		let maxHeight = getMaxAccel(stats);
 		ctx.beginPath();	
@@ -119,29 +99,20 @@ function drawAccelZ(id,color){
 			}
 			if (!(lastZ == 0)) {
 				ctx.beginPath();
-				ctx.moveTo((lastT / maxTime)*maxLength,lastZ/maxHeight * 250 + 250)
-				ctx.lineTo((currentT/maxTime)*maxLength,currentZ/maxHeight * 250 + 250);
+				ctx.moveTo((lastT / maxTime)*maxLength,500-(lastZ/maxHeight * 250 + 250));
+				ctx.lineTo((currentT/maxTime)*maxLength,500-(currentZ/maxHeight * 250 + 250));
 				ctx.strokeStyle = color ;
 				ctx.stroke();
 			}
-		})   	
-	}).fail(function() {
-		console.log( "error" );
-	}).always(function() {
-		console.log( "Drawing Accel Z complete" );
-	});
+		}) 
 }
-function drawRotaX(id,color){
-	console.log("Id : " + id + "\n");
-	$.getJSON("../json/" + id + ".json",function(data){
-	}).done(function( stats) {
+function drawRotaX(stats,color,maxTime){
 		let canvas = document.getElementById("rotaCanvas"); 
 		let ctx = canvas.getContext("2d");
 		let lastX = 0;
 		let lastT = 0;
 		let currentX = 0;
 		let currentT = 0;
-		let maxTime = stats[stats.length-1].time;
 		let maxLength = canvas.width;
 		ctx.beginPath();
 		ctx.moveTo(0,160);
@@ -157,29 +128,21 @@ function drawRotaX(id,color){
 			}
 			if (!(lastX == 0)) {
 				ctx.beginPath();
-				ctx.moveTo((lastT / maxTime)*maxLength,(lastX/360)*250 +250)
+				ctx.moveTo((lastT / maxTime)*maxLength,500-(((lastX)/360)*250 +250));
 				ctx.strokeStyle = color;
-				ctx.lineTo((currentT/maxTime)*maxLength,(currentX/360)*250 +250);
+				ctx.lineTo((currentT/maxTime)*maxLength,500-(((currentX)/360)*250 +250));
 				ctx.stroke();
 			}
 		})
-  	}).fail(function() {
-    	console.log( "error" );
-  	}).always(function() {
-    	console.log( "Drawing Rota X complete" );
-	});
 }
 
-function drawRotaY(id,color){
-	$.getJSON("../json/" + id + ".json",function(data){
-	}).done(function( stats) {
+function drawRotaY(stats,color,maxTime){
 		let canvas = document.getElementById("rotaCanvas"); 
 		let ctx = canvas.getContext("2d");
 		let lastY = 0;
 		let lastT = 0;
 		let currentY = 0;
 		let currentT = 0;
-		let maxTime = stats[stats.length-1].time;
 		let maxLength = canvas.width;
 		ctx.beginPath();
 		ctx.moveTo(0,160);
@@ -195,29 +158,21 @@ function drawRotaY(id,color){
 			}
 			if (!(lastY == 0)) {
 				ctx.beginPath();
-				ctx.moveTo((lastT / maxTime)*maxLength,lastY/360 * 250 +250)
+				ctx.moveTo((lastT / maxTime)*maxLength,500-((lastY)/180 * 250 +250));
 				ctx.strokeStyle = color;
-				ctx.lineTo((currentT/maxTime)*maxLength,currentY/360 * 250 +250);
+				ctx.lineTo((currentT/maxTime)*maxLength,500-(((currentY)/180) * 250 +250));
 				ctx.stroke();
 			}
 		})  	
-	}).fail(function() {
-    	console.log( "error" );
-  	}).always(function() {
-    	console.log( "Drawing Rota Y complete" );
-	});		
 }
 
-function drawRotaZ(id,color){
-	$.getJSON("../json/" + id + ".json",function(data){
-	}).done(function( stats) {
+function drawRotaZ(stats,color,maxTime){
 		let canvas = document.getElementById("rotaCanvas"); 
 		let ctx = canvas.getContext("2d");
 		let lastZ = 0;
 		let lastT = 0;
 		let currentZ = 0;
 		let currentT = 0;
-		let maxTime = stats[stats.length-1].time;
 		let maxLength = canvas.width;
 		ctx.beginPath();		
 		ctx.moveTo(0,160);
@@ -233,64 +188,12 @@ function drawRotaZ(id,color){
 			}
 			if (!(lastZ == 0)) {
 				ctx.beginPath();
-				ctx.moveTo( (lastT / maxTime)*maxLength,(lastZ/360) * 250 +250);
-				ctx.lineTo( (currentT/maxTime)*maxLength,(currentZ/360) * 250 +250);
+				ctx.moveTo( (lastT / maxTime)*maxLength,500-(((lastZ)/90) * 250 +250));
+				ctx.lineTo( (currentT/maxTime)*maxLength,500-(((currentZ)/90) * 250 +250));
 				ctx.strokeStyle = color ;
 				ctx.stroke();
 			}
 		})   	
-	}).fail(function() {
-		console.log( "error" );
-	}).always(function() {
-		console.log( "Drawing Rota Z complete" );
-	});
-}
-
-function redrawAccel() {
-	let canvas = document.getElementById("accelCanvas");
-	canvas.width = window.innerWidth
-	IDs = JSON.parse(Cookies.get().IDs);
-	if (isChecked('x1Accel')) 
-		drawAccelX(IDs[0],'#ff0000');
-	if (isChecked('y1Accel')) 
-		drawAccelY(IDs[0],'#00ff00');
-	if (isChecked('z1Accel')) 
-		drawAccelZ(IDs[0],'#0000ff');
-	if (IDs.length > 1 ) {
-		if (isChecked('x2Accel',)) 
-			drawAccelX(IDs[1],'#ff46af');
-		if (isChecked('y2Accel')) 
-			drawAccelY(IDs[1],'#ffcb46');
-		if (isChecked('z2Accel')) 
-			drawAccelZ(IDs[1],'#46ffdd');
-	}
-}
-
-function redrawRota() {
-	console.log("redrawRota");
-	IDs = JSON.parse(Cookies.get().IDs);
-	let canvas = document.getElementById("rotaCanvas");
-	canvas.width = window.innerWidth
-	if (isChecked('x1Rota')){
-		console.log("Drawing rotaX");
-		drawRotaX(IDs[0],'#ff0000');
-	}	
-	if (isChecked('y1Rota')){
-		console.log("Drawing rotaY");
-		drawRotaY(IDs[0],'#00ff00');
-	}
-	if (isChecked('z1Rota')){
-		console.log("Drawing rotaZ");
-		drawRotaZ(IDs[0],'#0000ff');
-	}
-	if (IDs.length > 1 ) {
-		if (isChecked('x2Rota',)) 
-			drawRotaX(IDs[1],'#ff46af');
-		if (isChecked('y2Rota')) 
-			drawRotaY(IDs[1],'#ffcb46');
-		if (isChecked('z2Rota')) 
-			drawRotaZ(IDs[1],'#46ffdd');
-	}
 }
 
 function getMaxAccel(data){
@@ -307,7 +210,7 @@ function getMaxAccel(data){
 				else if (min > val.acceleration.x)
 					min = val.acceleration.x
 			})  
-		maxX = maxInt(max, -1 * min );
+		maxX = getMax(max, -1 * min );
 		max = data[0].acceleration.y;
 		min = data[0].acceleration.y;
 			$.each( data , function(key,val){
@@ -316,7 +219,7 @@ function getMaxAccel(data){
 				else if (min > val.acceleration.y)
 					min = val.acceleration.y
 			})
-		maxY = maxInt(max, -1 * min );
+		maxY = getMax(max, -1 * min );
 		max = data[0].acceleration.z;
 		min = data[0].acceleration.z; 
 			$.each( data , function(key,val){
@@ -325,9 +228,122 @@ function getMaxAccel(data){
 				else if (min > val.acceleration.z)
 					min = val.acceleration.z
 			})	
-		maxZ =  maxInt(max, -1 * min);
-		let res = maxInt(maxInt(maxX,maxY),maxZ);
+		maxZ =  getMax(max, -1 * min);
+		let res = getMax(getMax(maxX,maxY),maxZ);
 		console.log("max : "+ res)
 		return res;	
 }
 
+function redrawAccel() {
+	//let maxTime = (IDs.length >1) ? getMax(IDs[0][IDs[0].length-1].time,IDs[1][IDs[1].length-1].time) : IDs[0][IDs[0];
+	let canvas = document.getElementById("accelCanvas");
+	canvas.width = window.innerWidth
+	IDs = JSON.parse(Cookies.get().IDs);
+		
+	if (IDs.length > 1 ) {
+		console.log("2 à afficher");
+		$.getJSON("../json/" + IDs[0] + ".json",function(data1){
+		}).done(function( stats1) {
+			$.getJSON("../json/" + IDs[1] + ".json",function(data2){
+			}).done(function( stats2) {
+				let maxTime = getMax(stats1[stats1.length-1].time,stats2[stats2.length-1].time)
+				if (isChecked('x1Accel')) 
+					drawAccelX(stats1,'#ff0000',maxTime);
+				if (isChecked('y1Accel')) 
+					drawAccelY(stats1,'#00ff00',maxTime);
+				if (isChecked('z1Accel')) 
+					drawAccelZ(stats1,'#0000ff',maxTime);
+				if (IDs.length > 1 ) {
+					if (isChecked('x2Accel',)) 
+						drawAccelX(stats2,'#ff46af',maxTime);
+					if (isChecked('y2Accel')) 
+						drawAccelY(stats2,'#ffcb46',maxTime);
+					if (isChecked('z2Accel')) 
+						drawAccelZ(stats2,'#46ffdd',maxTime);
+				}
+		  	}).fail(function() {
+		    	console.log( "error" );
+		  	}).always(function() {
+		    	console.log( "Drawing Accel X complete" );
+			});
+	  	}).fail(function() {
+	    	console.log( "error" );
+	  	}).always(function() {
+	    	console.log( "Drawing Accel X complete" );
+		});
+	} else {
+		console.log("1 a afficher");
+		$.getJSON("../json/" + IDs[0] + ".json",function(data){
+		}).done(function( stats) {
+			let maxTime = stats[stats.length-1].time;
+			if (isChecked('x1Accel')) 
+				drawAccelX(stats,'#ff0000',maxTime);
+			if (isChecked('y1Accel')) 
+				drawAccelY(stats,'#00ff00',maxTime);
+			if (isChecked('z1Accel')) 
+				drawAccelZ(stats,'#0000ff',maxTime);
+	  	}).fail(function() {
+	    	console.log( "error" );
+	  	}).always(function() {
+	    	console.log( "Drawing Accel X complete" );
+		});
+	}
+}
+
+function redrawRota() {
+	//let maxTime = (IDs.length >1) ? getMax(IDs[0][IDs[0].length-1].time,IDs[1][IDs[1].length-1].time) : IDs[0][IDs[0];
+	let canvas = document.getElementById("rotaCanvas");
+	canvas.width = window.innerWidth
+	IDs = JSON.parse(Cookies.get().IDs);
+		
+	if (IDs.length > 1 ) {
+		console.log("2 à afficher");
+		$.getJSON("../json/" + IDs[0] + ".json",function(data1){
+		}).done(function( stats1) {
+			$.getJSON("../json/" + IDs[1] + ".json",function(data2){
+			}).done(function( stats2) {
+				console.log(stats1);
+				console.log(stats2);
+				let maxTime = getMax(stats1[stats1.length-1].time,stats2[stats2.length-1].time)
+				if (isChecked('x1Rota')) 
+					drawRotaX(stats1,'#ff0000',maxTime);
+				if (isChecked('y1Rota')) 
+					drawRotaY(stats1,'#00ff00',maxTime);
+				if (isChecked('z1Rota')) 
+					drawRotaZ(stats1,'#0000ff',maxTime);
+				if (IDs.length > 1 ) {
+					if (isChecked('x2Rota',)) 
+						drawRotaX(stats2,'#ff46af',maxTime);
+					if (isChecked('y2Rota')) 
+						drawRotaY(stats2,'#ffcb46',maxTime);
+					if (isChecked('z2Rota')) 
+						drawRotaZ(stats2,'#46ffdd',maxTime);
+				}
+		  	}).fail(function() {
+		    	console.log( "erreur lors de la lecture du 1er fichier" );
+		  	}).always(function() {
+		    	console.log( "Drawing Rota X complete" );
+			});
+	  	}).fail(function() {
+	    	console.log( "erreur lors de la lecture du 2nd fichier" );
+	  	}).always(function() {
+	    	console.log( "Drawing Rota X complete" );
+		});
+	} else {
+		console.log("1 a afficher");
+		$.getJSON("../json/" + IDs[0] + ".json",function(data){
+		}).done(function( stats) {
+			let maxTime = stats[stats.length-1].time;
+			if (isChecked('x1Rota')) 
+				drawRotaX(stats,'#ff0000',maxTime);
+			if (isChecked('y1Rota')) 
+				drawRotaY(stats,'#00ff00',maxTime);
+			if (isChecked('z1Rota')) 
+				drawRotaZ(stats,'#0000ff',maxTime);
+	  	}).fail(function() {
+	    	console.log( "error" );
+	  	}).always(function() {
+	    	console.log( "Drawing Rota X complete" );
+		});
+	}
+}

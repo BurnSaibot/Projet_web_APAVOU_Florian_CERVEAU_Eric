@@ -36,7 +36,7 @@ function motion(event){
 		timer = Math.abs(currTime.getTime() - startDate.getTime())
 		register.records.push({
 			acceleration: {x: event.acceleration.x, y: event.acceleration.y , z : event.acceleration.z},
-			rotation: {alpha: event.rotationRate.alpha, beta: event.rotationRate.beta, gamma: event.rotationRate.gamma},
+			rotation: {alpha: event.rotation.alpha, beta: event.rotation.beta, gamma: event.rotation.gamma},
 			time: timer
 		})
 	}
