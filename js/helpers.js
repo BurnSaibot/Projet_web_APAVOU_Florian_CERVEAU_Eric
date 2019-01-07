@@ -47,7 +47,7 @@ function registerCookies(){
 	var date = new Date();
 	var currDay = date.getDate();
 	var currMonth = date.getMonth()+1;
-	alert( ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear());
+	//alert( ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear());
 	Cookies.set("date" , ((currDay < 10) ? '0' + currDay : currDay) + "/" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "/" + date.getFullYear(),{ expires: 7 });
 	Cookies.set('keyWords', JSON.stringify( [$('.k-word1').val(),$('.k-word2').val(),$('.k-word3').val()]), {expires: 7 });
 
