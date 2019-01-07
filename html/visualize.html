@@ -9,7 +9,7 @@
 		<script src="../js/helpers.js"></script>
 		<script src="../js/canvaProcessing.js"></script>
 	</head> 
-	<body> 
+	<body onload="disableCheckBoxes()"> 
 		<button onclick="setCookieID()" id="displayer"> SetCookieID </button>
 		<div id=canvasAccelContainer>
 			<canvas id="accelCanvas" width="500" height="500">
@@ -26,11 +26,11 @@
 			</fieldset>
 			<fieldset>
 				<legend>Valeurs à afficher pour le deuxieme fichier s'il existe : </legend>
-				<input type="checkbox" id="x2Accel" name="x2Accel">
+				<input type="checkbox" id="x2Accel" name="x2Accel" class="grp2">
 				<label for="x2Accel">Accélération X</label>
-				<input type="checkbox" id="y2Accel" name="y2Accel">
+				<input type="checkbox" id="y2Accel" name="y2Accel" class="grp2">
 				<label for="y2Accel">Accélération Y</label>
-				<input type="checkbox" id="z2Accel" name="z2Accel">
+				<input type="checkbox" id="z2Accel" name="z2Accel" class="grp2">
 				<label for="z2Accel">Accélération Z</label>
 			</fieldset>
 			<button onclick="redrawAccel()">Redessiner</button>
@@ -51,11 +51,11 @@
 			</fieldset>
 			<fieldset>
 				<legend>Valeurs à afficher pour le deuxieme fichier s'il existe : </legend>
-				<input type="checkbox" id="x2Rota" name="x2Rota">
+				<input type="checkbox" id="x2Rota" name="x2Rota" class="grp2">
 				<label for="x2Rota">Rotation X</label>
-				<input type="checkbox" id="y2Rota" name="y2Rota">
+				<input type="checkbox" id="y2Rota" name="y2Rota" class="grp2">
 				<label for="y2Rota">Rotation Y</label>
-				<input type="checkbox" id="z2Rota" name="z2Rota">
+				<input type="checkbox" id="z2Rota" name="z2Rota" class="grp2">
 				<label for="z2Rota">Rotation Z</label>
 			</fieldset>
 			<button onclick="redrawRota()">Redessiner</button>

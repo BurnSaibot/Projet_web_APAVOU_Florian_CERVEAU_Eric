@@ -1,4 +1,9 @@
-var IDs 
+var IDs = findAllGetParameters();
+function disableCheckBoxes(){
+	if (IDs.length <=1){
+		$("input.grp2").attr("disabled",true);
+	}
+}
 
 function setCookieID() {
 	Cookies.set('IDs',JSON.stringify([1,5]),{expires: 1});
@@ -11,6 +16,19 @@ function isChecked(s){
 function getMax(a,b) {
 	if (a>b) return a;
 	return b;
+}
+
+function findAllGetParameters() {
+	var result = [],
+		tmp = [];
+	location.search
+			.substr(1)
+			.split("&")
+			.forEach(function (item) {
+				tmp = item.split("=");
+				result.push(decodeURIComponent(tmp[1]));
+			});
+	return result;
 }
 
 function drawAccelX(stats,color,maxTime){
@@ -238,8 +256,7 @@ function redrawAccel() {
 	//let maxTime = (IDs.length >1) ? getMax(IDs[0][IDs[0].length-1].time,IDs[1][IDs[1].length-1].time) : IDs[0][IDs[0];
 	let canvas = document.getElementById("accelCanvas");
 	canvas.width = window.innerWidth
-	IDs = JSON.parse(Cookies.get().IDs);
-		
+	IDs = findAllGetParameters();
 	if (IDs.length > 1 ) {
 		console.log("2 à afficher");
 		$.getJSON("../json/" + IDs[0] + ".json",function(data1){
@@ -294,7 +311,7 @@ function redrawRota() {
 	//let maxTime = (IDs.length >1) ? getMax(IDs[0][IDs[0].length-1].time,IDs[1][IDs[1].length-1].time) : IDs[0][IDs[0];
 	let canvas = document.getElementById("rotaCanvas");
 	canvas.width = window.innerWidth
-	IDs = JSON.parse(Cookies.get().IDs);
+	IDs = findAllGetParameters();
 		
 	if (IDs.length > 1 ) {
 		console.log("2 à afficher");
@@ -347,3 +364,4 @@ function redrawRota() {
 		});
 	}
 }
+
