@@ -68,8 +68,8 @@ function fillName() {
 
 function testContent() {
 	if ($(".name").val.length > 0 && $(".title").val.length > 0 && $(".k-word1").val.length > 0 ) {
-		$("#validation").attr("disabled",true);
+		$(':input[type=submit]').attr("disabled",true);
 	} else {
-		$("#validation").attr("disabled",false);
+		$(':input[type=submit]').attr("disabled",false);
 	}
 }
