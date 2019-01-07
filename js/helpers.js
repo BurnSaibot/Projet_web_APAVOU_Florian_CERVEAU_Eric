@@ -65,3 +65,11 @@ function registerPseudo(){
 function fillName() {
 	$('.name').val(Cookies.get().user);
 }
+
+function testContent() {
+	if ($(".name").val.length > 0 && $(".title").val.length > 0 && $(".k-word1").val.length > 0 ) {
+		$("#validation").attr("disabled",true);
+	} else {
+		$("#validation").attr("disabled",false);
+	}
+}
