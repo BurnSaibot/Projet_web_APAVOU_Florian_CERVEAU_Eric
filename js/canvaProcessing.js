@@ -3,6 +3,9 @@ function disableCheckBoxes(){
 	if (IDs.length <=1){
 		$("input.grp2").attr("disabled",true);
 	}
+	$("input.grp1").prop("checked",true);
+	redrawAccel();
+	redrawRota();	
 }
 
 function setCookieID() {
